@@ -23,12 +23,13 @@ def predict_flood(data: FloodPrediction):
     data = data.dict()
     rainFallMarToMay = data["rainFallMarToMay"]
     avgRainFallJun = data["avgRainFallJun"]
+    avgRainFallJul = data["avgRainFallJul"]
     avgIncreaseRainFallMayToJun = data["avgIncreaseRainFallMayToJun"]
-    prediction = classifier.predict([[rainFallMarToMay, avgRainFallJun, avgIncreaseRainFallMayToJun]])
+    prediction = classifier.predict([[rainFallMarToMay, avgRainFallJun, avgRainFallJul, avgIncreaseRainFallMayToJun]])
     if prediction[0] == 1:
         prediction = "Flood"
     else:
-        prediction = "NO Flood"
+        prediction = "No Flood"
     return {"data": prediction}
 
 if __name__ == '__main__':
